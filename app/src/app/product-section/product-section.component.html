@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-3 offset-md-1">
+    <div class="accordion" id="accordionExample">
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Ajouter des produits</strong>
+            </div>
+            <div class="card-body">
+                <button (click)="showNewProductSection()" class="btn btn-info btn-md btn-block">Ajouter un nouveau produit</button> 
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <strong>Chercher des produits</strong>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                  <label>Nom du produit</label>
+                  <input type="text" class="form-control" id="productNameInput" [(ngModel)]="searchCriteria.name">
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Prix min : </label>
+                    <div class="col-sm-7">
+                      <input type="number" class="form-control" [(ngModel)]="searchCriteria.minprice">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-5 col-form-label">Prix max : </label>
+                    <div class="col-sm-7">
+                      <input type="number" class="form-control" [(ngModel)]="searchCriteria.maxprice">
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Tri par prix</label>
+                </div>
+                <br>
+                <button (click)="searchProducts()" class="btn btn-secondary btn-md btn-block">Lancer la recherhce</button>
+                <br>     
+            </div>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="displayAddNewProduct" class="col-md-7">
+    <app-add-product></app-add-product>
+  </div>
+  <div *ngIf="displayProductList" class="col-md-7">
+      <app-products-list [products]="products"></app-products-list>
+  </div>
+</div>
+
+<script>
+    
+</script>

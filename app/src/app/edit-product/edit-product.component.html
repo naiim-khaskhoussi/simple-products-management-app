@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header">
+        <strong class="text-primary">Mettre à jour un produit</strong>
+    </div>
+    <div class="card-body">
+        <br>
+        <div class="form-group">
+          <label>Nom du produit</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedProduct.name">
+        </div>
+        <div class="form-group">
+          <label>Prix</label>
+          <input type="number" step="0.01" class="form-control" [(ngModel)]="selectedProduct.price">
+        </div>
+        <div class="form-group">
+          <label>Quantité</label>
+          <input type="number" class="form-control" [(ngModel)]="selectedProduct.quantity">
+        </div>
+        <br>
+        <button (click)="updateProduct()" class="btn btn-primary btn-md btn-block">Mettre à jour ce produit</button>
+        <button data-toggle="modal" data-target="#confirmationModal" class="btn btn-secondary btn-md btn-block">Supprimer ce produit</button>
+        <br>
+        <div *ngIf="result.message.display" class="text-center">
+          <div *ngIf="result.saved==true" class="alert alert-success" role="alert">
+            {{ result.message.text }}
+          </div>
+          <div *ngIf="result.saved==false" class="alert alert-warning" role="alert">
+            {{ result.message.text }}
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal data-toggle="modal" data-target="#confirmationModal" -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmationModalLabel">Alerte de confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Voulez vous supprimer ce produit?
+        <div class="row">
+          <div class="col">Nom : <strong>{{selectedProduct.name}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col">Prix : <strong>{{selectedProduct.price + " €"}}</strong></div>
+        </div>
+        <div class="row">
+          <div class="col">Quantité : <strong>{{selectedProduct.quantity}}</strong></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button (click)="deleteProduct()" class="btn btn-primary">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
