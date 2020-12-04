@@ -12,3 +12,17 @@ You can set your database configuration from the *application.proprieties* file
 
 ## Rest API documentation:
 http://DOMAIN-NAME:PORT/api/doc.html
+
+## Running the server
+```bash
+      mvn clean install
+```
+## Install & Running the application
+Install all application dependencies
+```bash
+      npm install
+```
+Running the application
+```bash
+      ng serve
+```
